@@ -197,11 +197,27 @@ services:
       - cdc
     depends_on:
       - elasticsearch
+      
+#  elastalert:
+#    image: jertel/elastalert2
+#    container_name: elastalert
+#    environment:
+#      - ES_USERNAME=elastic
+#      - ES_PASSWORD=kibana
+#    volumes:
+#      - ../elastalert/elastalert.yaml:/opt/elastalert/config.yaml
+#      - ../elastalert/auth.yaml:/opt/elastalert/auth.yaml
+#      - ../elastalert/rules:/opt/elastalert/rules
+#    command: --verbose
+#    depends_on:
+#      - elasticsearch
+#      - kibana
+#    networks:
+#      - cdc
 
-  
   pyspark:
     hostname: pyspark
-    image: pyspark-test
+    image: pyspark-pfe
     ports:
       - "8888:8888" # Jupiter notebook
       - "4040:4040" # Spark UI
